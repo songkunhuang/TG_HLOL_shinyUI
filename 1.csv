@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>  <script type="application/shiny-singletons"></script>  <script type="application/html-dependencies">json2[2014.02.04];jquery[1.12.4];shiny[1.0.1];bootstrap-datepicker[1.6.4];selectize[0.11.2];font-awesome[4.7.0];bootstrap[3.3.7]</script><script src="shared/json2-min.js"></script>
+<script src="shared/jquery.min.js"></script>
+<link href="shared/shiny.css" rel="stylesheet" />
+<script src="shared/shiny.min.js"></script>
+<link href="shared/datepicker/css/bootstrap-datepicker3.min.css" rel="stylesheet" />
+<script src="shared/datepicker/js/bootstrap-datepicker.min.js"></script>
+<script>
+(function() {
+  var datepicker = $.fn.datepicker.noConflict();
+  $.fn.bsDatepicker = datepicker;
+})();
+</script>
+<link href="shared/selectize/css/selectize.bootstrap3.css" rel="stylesheet" />
+<!--[if lt IE 9]>
+<script src="shared/selectize/js/es5-shim.min.js"></script>
+<![endif]-->
+<script src="shared/selectize/js/selectize.min.js"></script>
+<link href="shared/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="shared/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="shared/bootstrap/js/bootstrap.min.js"></script>
+<script src="shared/bootstrap/shim/html5shiv.min.js"></script>
+<script src="shared/bootstrap/shim/respond.min.js"></script>  <title>配变重过载预警</title>
+  <link rel="stylesheet" type="text/css" href="shinythemes/css/cerulean.min.css"/>
+  <title>File download</title>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-static-top" role="navigation">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <span class="navbar-brand">配变重过载预警</span>
+      </div>
+      <ul class="nav navbar-nav">
+        <li class="active">
+          <a href="#tab-8930-1" data-toggle="tab" data-value="预警提交">预警提交</a>
+        </li>
+        <li>
+          <a href="#tab-8930-2" data-toggle="tab" data-value="预警清单">预警清单</a>
+        </li>
+        <li>
+          <a href="#tab-8930-3" data-toggle="tab" data-value="实际清单">实际清单</a>
+        </li>
+        <li>
+          <a href="#tab-8930-4" data-toggle="tab" data-value="可视化展示">可视化展示</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid">
+    <div class="tab-content">
+      <div class="tab-pane active" data-value="预警提交" id="tab-8930-1">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="shiny-flow-layout">
+              <div>
+                <div id="date2" class="shiny-date-input form-group shiny-input-container">
+                  <label class="control-label" for="date2">预警时间</label>
+                  <input type="text" class="form-control" data-date-language="zh-CN" data-date-week-start="1" data-date-format="yyyy-mm-dd" data-date-start-view="month" data-min-date="2017-04-16" data-max-date="2017-04-26" data-initial-date="2017-04-21"/>
+                </div>
+              </div>
+              <div>
+                <div class="form-group shiny-input-container">
+                  <label class="control-label" for="city">地市:</label>
+                  <div>
+                    <select id="city"><option value="福州" selected>福州</option>
+<option value="厦门">厦门</option></select>
+                    <script type="application/json" data-for="city" data-nonempty="">{}</script>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="form-group shiny-input-container">
+                  <label class="control-label" for="area">区县:</label>
+                  <div>
+                    <select id="area"><option value="div" selected>name</option>
+<optgroup label="attribs">
+<option value="area">id</option>
+<option value="shiny-text-output">class</option>
+</optgroup>
+<optgroup label="children">
+
+</optgroup></select>
+                    <script type="application/json" data-for="area" data-nonempty="">{}</script>
+                  </div>
+                </div>
+              </div>
+              <div>
+                <div class="form-group shiny-input-container">
+                  <label class="control-label" for="type">预警类型:</label>
+                  <div>
+                    <select id="type"><option value="重载" selected>重载</option>
+<option value="过载">过载</option></select>
+                    <script type="application/json" data-for="type" data-nonempty="">{}</script>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" data-value="预警清单" id="tab-8930-2">
+        <h2>File download</h2>
+        <div class="row">
+          <div class="col-sm-4">
+            <form class="well">
+              <div class="form-group shiny-input-container">
+                <label class="control-label" for="dataset">Choose a dataset:</label>
+                <div>
+                  <select id="dataset"><option value="predict" selected>predict</option>
+<option value="loessnum">loessnum</option>
+<option value="extend">extend</option></select>
+                  <script type="application/json" data-for="dataset" data-nonempty="">{}</script>
+                </div>
+              </div>
+              <div id="filetype" class="form-group shiny-input-radiogroup shiny-input-container">
+                <label class="control-label" for="filetype">File type:</label>
+                <div class="shiny-options-group">
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="filetype" value="csv" checked="checked"/>
+                      <span>csv</span>
+                    </label>
+                  </div>
+                  <div class="radio">
+                    <label>
+                      <input type="radio" name="filetype" value="tsv"/>
+                      <span>tsv</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <a id="downloadData" class="btn btn-default shiny-download-link " href="" target="_blank" download>
+                <i class="fa fa-download"></i>
+                Download
+              </a>
+            </form>
+          </div>
+          <div class="col-sm-8">
+            <div id="table" class="shiny-html-output"></div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" data-value="实际清单" id="tab-8930-3">
+        <div class="col-sm-8">
+          <div class="tabbable">
+            <ul class="nav nav-tabs">
+              <li class="active">
+                <a href="#tab-1028-1" data-toggle="tab" data-value="Tab 1">Tab 1</a>
+              </li>
+              <li>
+                <a href="#tab-1028-2" data-toggle="tab" data-value="Tab 2">Tab 2</a>
+              </li>
+              <li>
+                <a href="#tab-1028-3" data-toggle="tab" data-value="Tab 3">Tab 3</a>
+              </li>
+            </ul>
+            <div class="tab-content">
+              <div class="tab-pane active" data-value="Tab 1" id="tab-1028-1">
+                <h4>Table</h4>
+                <div id="table" class="shiny-html-output"></div>
+                <h4>Verbatim text output</h4>
+                <pre id="txtout" class="shiny-text-output noplaceholder"></pre>
+                <h1>Header 1</h1>
+                <h2>Header 2</h2>
+                <h3>Header 3</h3>
+                <h4>Header 4</h4>
+                <h5>Header 5</h5>
+              </div>
+              <div class="tab-pane" data-value="Tab 2" id="tab-1028-2"></div>
+              <div class="tab-pane" data-value="Tab 3" id="tab-1028-3"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-pane" data-value="可视化展示" id="tab-8930-4"></div>
+    </div>
+  </div>
+</body>
+
+</html>
